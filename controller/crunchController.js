@@ -1,4 +1,4 @@
-const { Tweet, User } = require('../models');
+const { Crunch, User } = require('../models');
 
 exports.timeline = async (req, res) => {
   const crunch = await Crunch.findAll({ include: User });
