@@ -1,0 +1,5 @@
+<%- include('../layouts/main') %>
+<a href="/tweets/new">New Tweet</a>
+<% tweets.forEach(tweet => { %>
+  <p><strong><%= tweet.User.username %>:</strong> <%= tweet.content %></p>
+<% }) %>
