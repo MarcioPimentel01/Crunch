@@ -21,7 +21,7 @@ exports.authenticate = async (req, res) => {
   const user = await User.findOne({ where: { email } });
   if (user && await bcrypt.compare(password, user.password)) {
     req.session.userId = user.id;
-    res.redirect('/tweets');
+    res.redirect('/crunch');
   } else {
     res.redirect('/login');
   }

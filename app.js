@@ -1,22 +1,14 @@
-const express = require('express');
-const bodyParser = require('body-parser');
-const session = require('express-session');
-const { sequelize } = require('./models');
-const app = express();
+const express = require('express')
 
-require('dotenv').config();
+const app = express()
 
-app.set('view engine', 'ejs');
-app.use(bodyParser.urlencoded({ extended: true }));
-app.use(session({ secret: 'mysecret', resave: false, saveUninitialized: true }));
+app.get('/', (req, res) => {
+  res.status(200).json({
+    status: 'Running',
+    message: 'Rest API is running'
+  })
+})
 
-const userRoutes = require('./routes/userRoutes');
-const crunchRoutes = require('./routes/crunchRoutes');
-app.use('/', userRoutes);
-app.use('/tweets', crunchRoutes);
-
-sequelize.sync().then(() => {
-  app.listen(3000, () => {
-    console.log('Server is running on port 3000');
-  });
-});
+app.listen(3000, () => {
+  console.log('Server is running on port 3000')
+})
